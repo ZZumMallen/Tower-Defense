@@ -1,9 +1,16 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Partisan.Game.Scripts
 {
     public class PlacementSystem : MonoBehaviour
     {
+        [SerializeField] private GameObject mouseIndicator;
+        [SerializeField] private InputManager inputManager;
 
+        private void Update()
+        {
+            var mousePosition = inputManager.GetSelectedMapPosition();
+            mouseIndicator.transform.position = mousePosition;
+        }
     }
 }
