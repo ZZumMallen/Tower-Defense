@@ -20,7 +20,7 @@ namespace Partisan.Game.BuildSystem
         #region UnityScripts 
         private void Awake()
         {
-            if(Current != null && Current != this)
+            if (Current != null && Current != this)
             {
                 Destroy(this);
                 return;
@@ -31,7 +31,7 @@ namespace Partisan.Game.BuildSystem
             prefab0 = currentPrefab0;
             prefab1 = currentPrefab1;
 
-            
+
         }
         #endregion
 
@@ -49,7 +49,7 @@ namespace Partisan.Game.BuildSystem
         {
             var mouseVal = Mouse.current.position.ReadValue();
             if (Camera.main == null) return false;
-            
+
             var ray = Camera.main.ScreenPointToRay(mouseVal);
             return Physics.Raycast(ray, 100f, placementLayerMask);
         }
@@ -66,7 +66,7 @@ namespace Partisan.Game.BuildSystem
             obj.AddComponent<ObjectDrag>();
         }
 
-        
+
 
         public void PlaceObject(PlaceableObject obj)
         {
@@ -77,7 +77,9 @@ namespace Partisan.Game.BuildSystem
             }
             _objectToPlace.Place();
         }
-        
+
+
+
         //This would be the place to add the grid system if needed later
     }
 }

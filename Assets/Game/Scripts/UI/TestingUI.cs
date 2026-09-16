@@ -1,14 +1,11 @@
-﻿using System;
+﻿using Partisan.Game.BuildSystem;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Partisan.Game.BuildSystem;
 
 namespace Partisan.Game.UI
 {
     public class TestingUI : MonoBehaviour
     {
-        
-
         private Button _button0;
         private Button _button1;
 
@@ -41,7 +38,7 @@ namespace Partisan.Game.UI
 
         private void OnButton0Clicked()
         {
-            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.prefab0);            
+            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.prefab0);
         }
 
         private void OnButton1Clicked()

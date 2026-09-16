@@ -12,8 +12,6 @@ namespace Partisan.Game.BuildSystem
             Destroy(drag);
 
             Placed = true;
-
-            //true
         }
     }
 }
