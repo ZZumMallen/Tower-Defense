@@ -45,6 +45,26 @@
                     "interactions": "Press",
                     "initialStateCheck": false,
                     "priority": 0
+                },
+                {
+                    "name": "SpaceBar",
+                    "type": "Button",
+                    "id": "d13f0ec6-f1c4-49b1-ad9c-9cc68418e414",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false,
+                    "priority": 0
+                },
+                {
+                    "name": "Esc",
+                    "type": "Button",
+                    "id": "7aff9d7f-93dc-474d-b397-28d0b939af49",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press",
+                    "initialStateCheck": false,
+                    "priority": 0
                 }
             ],
             "bindings": [
@@ -89,6 +109,28 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "KeyboardB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b311b88f-f012-4935-abec-453acddb37a2",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SpaceBar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d65aff01-3f8b-4dda-993f-145cc5e6194e",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Esc",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
