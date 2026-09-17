@@ -14,7 +14,6 @@ namespace Partisan
 
         private bool _readyToFire = true;
 
-
         private void Start()
         {
             if (origin == null)
@@ -27,23 +26,18 @@ namespace Partisan
             }
         }
 
-
-
-
         private void OnTriggerStay(Collider other)
         {
             if (!_readyToFire) return;
 
-            if (other.CompareTag("Enemy"))
-            {
-                _currentProjectile = Instantiate(projectilePrefab, origin.position, Quaternion.identity);
-                _projectileController = _currentProjectile.GetComponent<ProjectileController>();
-                _projectileController.SetTarget(other.transform);
+            if (!other.CompareTag("Enemy")) return;
+            _currentProjectile = Instantiate(projectilePrefab, origin.position, Quaternion.identity);
+            _projectileController = _currentProjectile.GetComponent<ProjectileController>();
+            _projectileController.SetTarget(other.transform);
 
-                _readyToFire = false;
+            _readyToFire = false;
 
-                StartCoroutine(Recharge());
-            }
+            StartCoroutine(Recharge());
         }
 
         private IEnumerator Recharge()

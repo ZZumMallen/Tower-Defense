@@ -5,7 +5,7 @@ namespace Partisan
 {
     public class RedMob : MonoBehaviour
     {
-        [SerializeField] private GameObject _target;
+        [SerializeField] private GameObject navTarget;
         private NavMeshAgent _agent;
 
         private void Awake()
@@ -13,9 +13,9 @@ namespace Partisan
             _agent = GetComponent<NavMeshAgent>();
         }
 
-        void Start()
+        private void Start()
         {
-            _agent.SetDestination(_target.transform.position);
+            _agent.SetDestination(navTarget.transform.position);
         }
 
 

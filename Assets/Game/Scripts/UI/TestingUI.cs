@@ -38,12 +38,12 @@ namespace Partisan.Game.UI
 
         private void OnButton0Clicked()
         {
-            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.prefab0);
+            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab0);
         }
 
         private void OnButton1Clicked()
         {
-            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.prefab1);
+            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab1);
         }
 
 

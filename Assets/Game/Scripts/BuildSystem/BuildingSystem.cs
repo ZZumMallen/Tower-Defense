@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,15 +9,16 @@ namespace Partisan.Game.BuildSystem
         public static BuildingSystem Current { get; private set; }
 
         [SerializeField] private LayerMask placementLayerMask;
-        public GameObject prefab0 { get; private set; }
-        public GameObject prefab1 { get; private set; }
+        public GameObject Prefab0 { get; private set; }
+        public GameObject Prefab1 { get; private set; }
 
         [SerializeField] private GameObject currentPrefab0;
         [SerializeField] private GameObject currentPrefab1;
 
         private Vector3 _lastPosition;
+        private Vector3 _initPosition;
         private PlaceableObject _objectToPlace;
-
+        
         #region UnityScripts 
         private void Awake()
         {
@@ -28,8 +30,8 @@ namespace Partisan.Game.BuildSystem
 
             Current = this;
 
-            prefab0 = currentPrefab0;
-            prefab1 = currentPrefab1;
+            Prefab0 = currentPrefab0;
+            Prefab1 = currentPrefab1;
 
 
         }
@@ -42,10 +44,11 @@ namespace Partisan.Game.BuildSystem
             var ray = Camera.main.ScreenPointToRay(mouseVal);
 
             if (Physics.Raycast(ray, out var hit, 100f, placementLayerMask)) _lastPosition = hit.point;
+            Debug.Log(_lastPosition);
             return _lastPosition;
         }
 
-        public bool CanBePlaced()
+        private bool CanBePlaced()
         {
             var mouseVal = Mouse.current.position.ReadValue();
             if (Camera.main == null) return false;
@@ -58,15 +61,18 @@ namespace Partisan.Game.BuildSystem
         {
             var position = Vector3.zero;
             var obj = Instantiate(prefab, position, Quaternion.identity);
-            obj.GetComponentInChildren<MeshRenderer>().enabled = true;
-
+            foreach (var child in obj.GetComponentsInChildren<MeshRenderer>())
+            {
+                child.enabled = true;
+            }
+            
+            //EnableAllChildren(prefab);
+            
             _objectToPlace = obj.GetComponent<PlaceableObject>();
-
-
+            
+            //private virtual void
             obj.AddComponent<ObjectDrag>();
         }
-
-
 
         public void PlaceObject(PlaceableObject obj)
         {
@@ -77,9 +83,5 @@ namespace Partisan.Game.BuildSystem
             }
             _objectToPlace.Place();
         }
-
-
-
-        //This would be the place to add the grid system if needed later
     }
 }

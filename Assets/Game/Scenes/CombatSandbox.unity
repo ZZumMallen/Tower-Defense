@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8613dcfae349dd44080c682b19c5364a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.RedMob
-  _target: {fileID: 589594447}
+  navTarget: {fileID: 589594447}
 --- !u!195 &246503170
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8613dcfae349dd44080c682b19c5364a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.RedMob
-  _target: {fileID: 589594447}
+  navTarget: {fileID: 589594447}
 --- !u!195 &978659603
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1430,10 +1430,10 @@ PrefabInstance:
       addedObject: {fileID: 246503170}
     - targetCorrespondingSourceObject: {fileID: 1361533125714473487, guid: 76fb60868e009284ab5e213aaf94c203, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 246503169}
+      addedObject: {fileID: 246503172}
     - targetCorrespondingSourceObject: {fileID: 1361533125714473487, guid: 76fb60868e009284ab5e213aaf94c203, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 246503172}
+      addedObject: {fileID: 246503169}
   m_SourcePrefab: {fileID: 100100000, guid: 76fb60868e009284ab5e213aaf94c203, type: 3}
 --- !u!23 &5246447008023675745
 MeshRenderer:
