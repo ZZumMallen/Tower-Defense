@@ -1,26 +1,19 @@
-﻿using Partisan.Game.BuildSystem;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UIElements;
+using Partisan.Game.BuildSystem;
+using Partisan.Game.EnemySystem;
 
 namespace Partisan.Game.UI
 {
     public class TestingUI : MonoBehaviour
     {
-        private Button _button0;
-        private Button _button1;
-
+        private Button _button0, _button1, _spawnEnemy;
         private int _uiVersion = 0;
 
-        void Awake()
+        
+        private void Awake()
         {
             GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
-        }
-
-        void OnDestroy()
-        {
-            _button0.clicked -= OnButton0Clicked;
-            _button1.clicked -= OnButton1Clicked;
-            GetComponent<PanelRenderer>().UnregisterUIReloadCallback(OnUIReload);
         }
 
         private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
@@ -31,19 +24,34 @@ namespace Partisan.Game.UI
 
             _button0 = root.Q<Button>("spawnBuilding0");
             _button1 = root.Q<Button>("spawnBuilding1");
+            _spawnEnemy = root.Q<Button>("btn-spawn-enemy");
+            
 
             _button0.clicked += OnButton0Clicked;
             _button1.clicked += OnButton1Clicked;
+            _spawnEnemy.clicked += OnSpawnEnemyClicked;
         }
 
-        private void OnButton0Clicked()
+        private static void OnSpawnEnemyClicked()
+        {
+            EnemyPool.Current.SpawnPooledObject();
+        }
+
+        private static void OnButton0Clicked()
         {
             BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab0);
         }
 
-        private void OnButton1Clicked()
+        private static void OnButton1Clicked()
         {
             BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab1);
+        }
+
+        private void OnDestroy()
+        {
+            _button0.clicked -= OnButton0Clicked;
+            _button1.clicked -= OnButton1Clicked;
+            GetComponent<PanelRenderer>().UnregisterUIReloadCallback(OnUIReload);
         }
 
 

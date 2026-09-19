@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 765177689673686290}
   - component: {fileID: -4572864187377945080}
   - component: {fileID: 1634135374233094104}
+  - component: {fileID: 5550374429442912984}
   m_Layer: 0
   m_Name: CisternParent
   m_TagString: Untagged
@@ -264,3 +265,24 @@ MonoBehaviour:
   origin: {fileID: 7734473583503967872}
   projectilePrefab: {fileID: 0}
   timeBetweenShots: 1
+--- !u!135 &5550374429442912984
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897805248731727635}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 4
+  m_Center: {x: 0, y: 0, z: 0}

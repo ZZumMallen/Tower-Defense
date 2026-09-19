@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,20 +6,19 @@ namespace Partisan.Game.BuildSystem
 {
     public class ObjectDrag : MonoBehaviour
     {
-        
-        
-        private void OnMouseDown()
+        private Collider _collider;
+
+        private void Start()
         {
-            var pos = transform.position;
-            var mousePos = BuildingSystem.Current.GetMouseWorldPosition();
-            var gameObjectName = gameObject.name;
-            
-            Debug.Log($"{gameObjectName} is at {pos} and mouse is at {mousePos}");
+            _collider = gameObject.GetComponentInParent<Collider>();
         }
         
         private void OnMouseDrag()
         {
-            transform.position = BuildingSystem.Current.GetMouseWorldPosition();
+            if (_collider.CompareTag("Tower"))
+            {
+                transform.position = BuildingSystem.Current.GetMouseWorldPosition();
+            }
         }
     }
 }

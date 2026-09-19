@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,38 +6,34 @@ namespace Partisan
 {
     public class TowerManager : MonoBehaviour
     {
-        [SerializeField] private Transform origin;
+        [SerializeField] private Transform firePointTransform;
         [SerializeField] private GameObject projectilePrefab;
+        [SerializeField] private float bdc = 0.25f;
         [SerializeField] private float timeBetweenShots = 1f; // Time in seconds between shots
 
-        private ProjectileController _projectileController;
-        private GameObject _currentProjectile;
-
+        private Vector3 _enemyPosition;
+        private Vector3 _enemyAdjustablePosition;
         private bool _readyToFire = true;
-
-        private void Start()
-        {
-            if (origin == null)
-            {
-                Debug.LogError("Origin transform is not assigned.");
-            }
-            if (projectilePrefab == null)
-            {
-                Debug.LogError("Projectile prefab is not assigned.");
-            }
-        }
 
         private void OnTriggerStay(Collider other)
         {
-            if (!_readyToFire) return;
+            if (!_readyToFire || !other.CompareTag("Enemy")) return;
+            _enemyAdjustablePosition = new Vector3(other.transform.position.x, -(other.transform.position.y - bdc), other.transform.position.z);
+            
 
-            if (!other.CompareTag("Enemy")) return;
-            _currentProjectile = Instantiate(projectilePrefab, origin.position, Quaternion.identity);
-            _projectileController = _currentProjectile.GetComponent<ProjectileController>();
-            _projectileController.SetTarget(other.transform);
+            _enemyPosition = (_enemyAdjustablePosition - transform.position);
 
+
+            
+            
+            Fire(_enemyPosition);
             _readyToFire = false;
+        }
 
+        private void Fire(Vector3 enemyRelativePosition)
+        {
+            var prefabLookRotation = Quaternion.LookRotation(enemyRelativePosition);
+            Instantiate(projectilePrefab, firePointTransform.position, prefabLookRotation);
             StartCoroutine(Recharge());
         }
 

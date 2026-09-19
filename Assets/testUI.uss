@@ -5,4 +5,5 @@
     margin-top: 8px;
     margin-right: 2px;
     margin-left: 2px;
+    width: 140px;
 }

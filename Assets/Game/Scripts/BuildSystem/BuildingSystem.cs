@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,11 +8,11 @@ namespace Partisan.Game.BuildSystem
         public static BuildingSystem Current { get; private set; }
 
         [SerializeField] private LayerMask placementLayerMask;
-        public GameObject Prefab0 { get; private set; }
-        public GameObject Prefab1 { get; private set; }
-
         [SerializeField] private GameObject currentPrefab0;
         [SerializeField] private GameObject currentPrefab1;
+        
+        public GameObject Prefab0 { get; private set; }
+        public GameObject Prefab1 { get; private set; }
 
         private Vector3 _lastPosition;
         private Vector3 _initPosition;
