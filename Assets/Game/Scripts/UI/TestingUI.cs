@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UIElements;
 using Partisan.Game.BuildSystem;
-using Partisan.Game.EnemySystem;
 
 namespace Partisan.Game.UI
 {
@@ -34,23 +33,21 @@ namespace Partisan.Game.UI
 
         private static void OnSpawnEnemyClicked()
         {
-            EnemyPool.Current.SpawnPooledObject();
+            //
         }
 
         private static void OnButton0Clicked()
         {
-            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab0);
+            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.TowerPrefab1);
         }
 
         private static void OnButton1Clicked()
         {
-            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.Prefab1);
+            BuildingSystem.Current.InitializeWithObject(BuildingSystem.Current.TowerPrefab2);
         }
 
         private void OnDestroy()
         {
-            _button0.clicked -= OnButton0Clicked;
-            _button1.clicked -= OnButton1Clicked;
             GetComponent<PanelRenderer>().UnregisterUIReloadCallback(OnUIReload);
         }
 

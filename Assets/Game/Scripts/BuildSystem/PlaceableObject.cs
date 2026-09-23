@@ -10,7 +10,6 @@ namespace Partisan.Game.BuildSystem
         {
             var drag = gameObject.GetComponent<ObjectDrag>();
             Destroy(drag);
-
             Placed = true;
         }
     }

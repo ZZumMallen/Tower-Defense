@@ -6,19 +6,22 @@ namespace Partisan.Game.BuildSystem
 {
     public class ObjectDrag : MonoBehaviour
     {
-        private Collider _collider;
+        private Vector3 _offset;        
 
-        private void Start()
+        private void OnMouseDown()
         {
-            _collider = gameObject.GetComponentInParent<Collider>();
+            _offset = transform.position - BuildingSystem.Current.GetMouseWorldPosition();
         }
-        
+
         private void OnMouseDrag()
         {
-            if (_collider.CompareTag("Tower"))
-            {
-                transform.position = BuildingSystem.Current.GetMouseWorldPosition();
-            }
+            Cursor.visible = false;
+            transform.position = BuildingSystem.Current.GetMouseWorldPosition() + _offset;
+        }
+
+        private void OnMouseUp()
+        {
+            Cursor.visible = true;
         }
     }
 }
