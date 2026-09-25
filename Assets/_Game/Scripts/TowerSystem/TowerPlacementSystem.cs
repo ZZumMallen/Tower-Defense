@@ -4,32 +4,33 @@ using UnityEngine.InputSystem;
 
 namespace Partisan
 {
-    public class PlacementSystem : MonoBehaviour
+    public class TowerPlacementSystem : MonoBehaviour
     {
-        public static PlacementSystem instance;
+        public static TowerPlacementSystem Instance;
 
         [SerializeField] private LayerMask placementLayer;
         [SerializeField] private GameObject testPrefab;
+        [SerializeField] private Camera camera;
         [SerializeField] private float verticalOffset = 0.5f;
 
         private Vector3 _lastPosition;
 
         private void Awake()
         {
-            if(instance == null)
+            if(Instance == null)
             {
-                instance = this;
+                Instance = this;
             }
             else
             {
-                Destroy(instance);
+                Destroy(Instance);
             }
         }
 
         public Vector3 GetMouseWorldPosition()
         {
             var mouseVal = Mouse.current.position.ReadValue();
-            var ray = Camera.main.ScreenPointToRay(mouseVal);
+            var ray = camera.ScreenPointToRay(mouseVal);
 
             if (Physics.Raycast(ray, out var hit, 100f, placementLayer)) _lastPosition = hit.point;
 

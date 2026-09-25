@@ -10,16 +10,8 @@ namespace Partisan
         public void OnMouseDrag()
         {
             if(DragAllowed)
-                transform.position = PlacementSystem.instance.GetMouseWorldPosition();
+                transform.position = TowerPlacementSystem.Instance.GetMouseWorldPosition();
         }
     }
 }
 
-
-
-/*public bool DragAllowed { get; private set; }
-
-private void OnMouseDrag()
-{
-    transform.position = PlacementSystem.instance.GetMouseWorldPosition();
-}*/

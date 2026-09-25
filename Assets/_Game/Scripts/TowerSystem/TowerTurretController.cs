@@ -1,17 +1,14 @@
 using Sirenix.OdinInspector;
-using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Partisan
 {
-    public class TurretController : MonoBehaviour
+    public class TowerTurretController : MonoBehaviour
     {
-        private static WaitForSeconds _waitForSeconds0_2 = new WaitForSeconds(0.2f);
         [Title("Attributes")]
         [SerializeField] private float range = 15f;
         [SerializeField] private float fireRate = 1f;
-        [SerializeField] private float fireCooldown = 0f;
+        [SerializeField] private float fireCooldown;
         [SerializeField] private float rotationSpeed = 2f;
 
         [Title("Tower Setup Fields")]
@@ -20,8 +17,8 @@ namespace Partisan
         [SerializeField] private Transform firePoint;
 
         private Transform _target;
-        private GameObject _nearestEnemy = null;
-        private readonly string enemyTag = "Enemy";        
+        private GameObject _nearestEnemy;
+        private const string EnemyTag = "Enemy";
 
         private void Start()
         {
@@ -30,7 +27,7 @@ namespace Partisan
 
         private void Update()
         {
-            if (_target == null) return;            
+            if (!_target) return;            
             RotateTurretTowardsEnemy();
 
             if (fireCooldown > 0f) return;                           
@@ -43,9 +40,11 @@ namespace Partisan
         private void Shoot()
         {           
             var newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            BulletController bulletController = newBullet.GetComponent<BulletController>();
+            
+            //Todo move the bullet system into an object pool
+            var bulletController = newBullet.GetComponent<BulletController>();
 
-            if (bulletController != null) 
+            if (bulletController) 
             {
                 bulletController.SetTarget(_target);
             }
@@ -61,20 +60,20 @@ namespace Partisan
 
         private void UpdateTarget()
         {
-            var enemyList = GameObject.FindGameObjectsWithTag(enemyTag);
-            var _shortestDistance = Mathf.Infinity;
+            var enemyList = GameObject.FindGameObjectsWithTag(EnemyTag);
+            var shortestDistance = Mathf.Infinity;
 
             foreach (var enemy in enemyList)
             {
                 var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-                if(distanceToEnemy < _shortestDistance)
+                if(distanceToEnemy < shortestDistance)
                 {
-                    _shortestDistance = distanceToEnemy;
+                    shortestDistance = distanceToEnemy;
                     _nearestEnemy = enemy;
                 }
             }
 
-            if (_nearestEnemy != null && _shortestDistance <= range)
+            if (_nearestEnemy != null && shortestDistance <= range)
             {
                 _target = _nearestEnemy.transform;
             }

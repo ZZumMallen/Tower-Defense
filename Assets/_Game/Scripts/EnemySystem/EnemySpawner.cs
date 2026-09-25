@@ -15,7 +15,7 @@ namespace Partisan
         {
             if(_agentTarget == null)
             {
-                _agentTarget = FindAnyObjectByType<TargetLocator>().gameObject;
+                _agentTarget = FindAnyObjectByType<EnemyTargetLocator>().gameObject;
             }
         }
 

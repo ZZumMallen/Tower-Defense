@@ -926,6 +926,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1840767419119324995, guid: 3cad29f92f44a914693fc2910f237c78, type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 472349314}
+    - target: {fileID: 1840767419119324995, guid: 3cad29f92f44a914693fc2910f237c78, type: 3}
       propertyPath: testPrefab
       value: 
       objectReference: {fileID: 3511151267202410390, guid: 77a560f19b18be1479eaec61e8715067, type: 3}
