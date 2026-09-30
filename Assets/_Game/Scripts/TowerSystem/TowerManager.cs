@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Partisan
 {
-    public class TowerManager : MonoBehaviour, IDragable
+    public class TowerManager : MonoBehaviour
     {
         public bool DragAllowed { get; set ; }        
 

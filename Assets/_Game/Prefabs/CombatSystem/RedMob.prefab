@@ -70,7 +70,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8613dcfae349dd44080c682b19c5364a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.RedMob
-  navTarget: {fileID: 0}
 --- !u!195 &7695751836818103634
 NavMeshAgent:
   m_ObjectHideFlags: 0

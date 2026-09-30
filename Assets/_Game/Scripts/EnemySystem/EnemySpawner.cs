@@ -1,39 +1,39 @@
-using Sirenix.OdinInspector;
+using System.Collections;
 using UnityEngine;
+
+
 
 namespace Partisan
 {
     public class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private GameObject enemyPrefab;
-        [SerializeField] private float spawnCooldown = 2f;
-        [SerializeField] private float enemiesPerWave = 5f;
+        [SerializeField] private Transform enemySpawnPoint;
+        [SerializeField] private GameObject agentTarget;
+        //[SerializeField] private float spawnCooldown = 2f;
+        //[SerializeField] private float enemiesPerWave = 5f;
 
-        private GameObject _agentTarget;
+        private TestingUI _ui;
 
         private void Awake()
         {
-            if(_agentTarget == null)
-            {
-                _agentTarget = FindAnyObjectByType<EnemyTargetLocator>().gameObject;
-            }
+            _ui = GetComponent<TestingUI>();          
         }
 
-        [Button]
-        public void SpawnWave()
-        {    
-            InvokeRepeating(nameof(Deploy), 0f, spawnCooldown);
-        }
-
-        private void Deploy()
+        private void Start()
         {
-            if (enemiesPerWave > 0f)
-            {
-                var t = Instantiate(enemyPrefab, gameObject.transform);
-                EnemyController controller = t.GetComponent<EnemyController>();
-                controller.SetAgentTarget(_agentTarget);
-                enemiesPerWave -= 1;
-            }
+            _ui.OnRequestEnemy += SpawnEnemy;
         }
+
+        private void SpawnEnemy()
+        {
+            var t = Instantiate(enemyPrefab, enemySpawnPoint);
+            Enemy controller = t.GetComponent<Enemy>();
+            controller.SetAgentTarget(agentTarget);
+        }
+
+
+
+
     }
 }

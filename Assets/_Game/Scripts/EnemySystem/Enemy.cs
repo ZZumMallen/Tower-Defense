@@ -3,7 +3,7 @@ using UnityEngine.AI;
 
 namespace Partisan
 {
-    public class EnemyController : MonoBehaviour
+    public class Enemy : MonoBehaviour
     {        
         private NavMeshAgent _agent;
 

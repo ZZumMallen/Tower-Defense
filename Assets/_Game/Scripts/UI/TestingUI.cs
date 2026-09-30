@@ -1,17 +1,31 @@
-﻿using UnityEngine;
+﻿using System;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.UIElements;
+
+// publisher
 
 namespace Partisan
 {
     public class TestingUI : MonoBehaviour
     {
-        private Button _button0, _button1, _spawnEnemy;
         private int _uiVersion = 0;
-
         
+        private Button _spawnSingle, _spawnWave, _spawnTower, _spawnNothing;
+
+        public event Action OnRequestEnemy;
+        public event Action OnRequestWave;
+        public event Action OnRequestTower;
+        public event Action OnRequestNothing;
+
         private void Awake()
         {
             GetComponent<PanelRenderer>().RegisterUIReloadCallback(OnUIReload);
+        }
+
+        private void OnDestroy()
+        {
+            GetComponent<PanelRenderer>().UnregisterUIReloadCallback(OnUIReload);
         }
 
         private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)
@@ -20,36 +34,20 @@ namespace Partisan
 
             _uiVersion = version;
 
-            _button0 = root.Q<Button>("spawnBuilding0");
-            _button1 = root.Q<Button>("spawnBuilding1");
-            _spawnEnemy = root.Q<Button>("btn-spawn-enemy");
-            
-
-            _button0.clicked += OnButton0Clicked;
-            _button1.clicked += OnButton1Clicked;
-            _spawnEnemy.clicked += OnSpawnEnemyClicked;
+            _spawnSingle = root.Q<Button>("btn-spawn-enemy-single");
+            _spawnWave = root.Q<Button>("btn-spawn-enemy-wave");
+            _spawnTower = root.Q<Button>("btn-spawn-tower");
+            _spawnNothing = root.Q<Button>("btn-spawn-nothing");            
+                
+            _spawnSingle.clicked += OnSpawnSingleClicked;
+            _spawnWave.clicked += OnSpawnWaveClicked;
+            _spawnTower.clicked += OnSpawnTowerClicked;
+            _spawnNothing.clicked += OnSpawnNothingClicked;
         }
 
-        private static void OnSpawnEnemyClicked()
-        {
-            //
-        }
-
-        private static void OnButton0Clicked()
-        {
-            //
-        }
-
-        private static void OnButton1Clicked()
-        {
-            //
-        }
-
-        private void OnDestroy()
-        {
-            GetComponent<PanelRenderer>().UnregisterUIReloadCallback(OnUIReload);
-        }
-
-
+        private void OnSpawnSingleClicked() => OnRequestEnemy?.Invoke();
+        private void OnSpawnWaveClicked() => OnRequestWave?.Invoke();
+        private void OnSpawnTowerClicked() => OnRequestTower?.Invoke();
+        private void OnSpawnNothingClicked() => OnRequestNothing?.Invoke();
     }
 }

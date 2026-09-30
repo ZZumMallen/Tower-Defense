@@ -1,21 +1,30 @@
+using System;
 using UnityEngine;
 
 namespace Partisan
 {
-    public class Projec : MonoBehaviour
-    {
-        public Transform target;
+    public class Projectile : MonoBehaviour
+    {       
+
+        public Transform MyTarget;
         [SerializeField] private float speed;
+
+
+        public void SetTarget(Transform target)
+        {
+            MyTarget = target;
+        }
+
 
         private void Update()
         {
-            if(!target)
+            if(!MyTarget)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            var dir = target.position - transform.position;
+            var dir = MyTarget.position - transform.position;
             var distanceThisFrame = speed * Time.deltaTime;
 
             if (dir.magnitude <= distanceThisFrame) 
