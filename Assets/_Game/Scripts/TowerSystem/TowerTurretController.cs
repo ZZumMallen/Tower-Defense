@@ -37,7 +37,7 @@ namespace Partisan
             fireCooldown -= Time.deltaTime;
         }
 
-        private void Shoot()
+        //Todo move the bullet system into an object pool
         {           
             var newBullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             

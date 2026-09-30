@@ -2,25 +2,20 @@ using UnityEngine;
 
 namespace Partisan
 {
-    public class BulletController : MonoBehaviour
+    public class Projec : MonoBehaviour
     {
-        private Transform _target;
+        public Transform target;
         [SerializeField] private float speed;
-
-        public void SetTarget(Transform target)
-        {
-            _target = target;
-        }
 
         private void Update()
         {
-            if( _target == null)
+            if(!target)
             {
                 Destroy(gameObject);
                 return;
             }
 
-            var dir = _target.position - transform.position;
+            var dir = target.position - transform.position;
             var distanceThisFrame = speed * Time.deltaTime;
 
             if (dir.magnitude <= distanceThisFrame) 
@@ -34,7 +29,6 @@ namespace Partisan
 
         private void HitTarget()
         {
-            Debug.Log("Hit something");
             Destroy(gameObject);
         }
     }
