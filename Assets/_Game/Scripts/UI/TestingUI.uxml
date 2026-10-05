@@ -1,7 +1,7 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/UI%20Toolkit/testUI.uss?fileID=7433441132597879392&amp;guid=6abbdb61ddbb849449fae9755e45adef&amp;type=3#testUI"/>
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; position: absolute; left: auto; top: 0; justify-content: space-around; align-self: center;">
-        <ui:Button text="Spawn Single" name="btn-spawn-enemy-single" class="unity-button" style="height: 52px; white-space: pre-wrap;"/>
+        <ui:Button text="Spawn Single" name="btn-spawn-enemy-single" class="unity-button" style="height: 52px; white-space: pre-wrap;" />
         <ui:Button text="Spawn Wave" name="btn-spawn-enemy-wave" class="unity-button"/>
         <ui:Button text="Spawn Tower" name="btn-spawn-tower" selectable="true" double-click-selects-word="false"/>
         <ui:Button text="I do Nothing" name="btn-spawn-nothing" parse-escape-sequences="true" enabled="true"/>
