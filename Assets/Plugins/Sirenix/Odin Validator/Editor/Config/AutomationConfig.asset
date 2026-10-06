@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Sirenix.OdinValidator.Editor.dll::Sirenix.OdinValidator.Editor.AutomationConfig
   OnPlayMode: 1
   OnPlayModeIfWarnings: 0
-  OnPlayModeIfErrors: 3
+  OnPlayModeIfErrors: 4
   OnPlayModeAlwaysCompleteValidationFully: 0
-  OnPlayModeFlashScreen: 1
+  OnPlayModeFlashScreen: 0
   OnPlayModeSetup:
     Profile: 0
-    ProfileAsset: {fileID: 0}
+    ProfileAsset: {fileID: 11400000, guid: 8d0a9c3cccc98c84dbfe363bf90219db, type: 2}
   OnBuild: 0
   OnBuildIfWarnings: 0
   OnBuildIfErrors: 3

@@ -17,10 +17,6 @@ namespace Partisan
         [SerializeField] private Transform turret;
         [SerializeField] private Transform firePoint;
 
-        private Quaternion _startRotation;
-        private Vector3 _dummyStartPosition;
-        private Vector3 _enemyPosition;
-
 
         private GameObject[] _enemyList;
         private GameObject _targetSolution;
@@ -30,19 +26,8 @@ namespace Partisan
         private const string EnemyTag = "Enemy";
 
 
-        private void Awake()
-        {
-            _startRotation = Quaternion.Euler(0f, 0f, 0f);
-        }
-
         private void Start()
         {
-
-            var p = gameObject.transform.position;
-            _dummyStartPosition = new Vector3(p.x, p.y, p.z + 2);
-
-            
-
             _readyToShoot = true;
             InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
         }
@@ -83,17 +68,6 @@ namespace Partisan
             turret.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
 
-/*        private void RotateTurretTowardsIdle()
-        {
-            var dist = Mathf.Abs(_startRotation.eulerAngles.y - turret.rotation.eulerAngles.y);
-            if (dist < 0.1f) return; 
-
-            var dir = _dummyStartPosition - transform.position;
-            var lookRotation = Quaternion.LookRotation(dir);
-            var rotation = Quaternion.Lerp(turret.rotation, lookRotation, Time.deltaTime * rotationSpeed).eulerAngles;
-            turret.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-        }*/
-
         private void UpdateTarget()
         {
             _enemyList = GameObject.FindGameObjectsWithTag(EnemyTag);
@@ -109,21 +83,26 @@ namespace Partisan
                     _nearestEnemy = enemy;
                 }
             }
-                
-            if (_nearestEnemy != null && shortestDistance <= effectiveRange)
-            {
-                _targetSolution = _nearestEnemy;
-            }
-            else
-            {
-                _targetSolution = null;
-            }             
 
             if (_nearestEnemy == null) return;
+
+            ValidateTarget(shortestDistance, _nearestEnemy);
+
         }
 
+        private GameObject ValidateTarget(float shortest, GameObject nearest)
+        {
+            if(nearest != null && shortest <= effectiveRange)
+            {
+                _targetSolution = nearest;
+            }
+            else 
+            {
+                _targetSolution=null;
+            }
 
-
+            return _targetSolution;
+        }
 
         private void OnDrawGizmosSelected()
         {

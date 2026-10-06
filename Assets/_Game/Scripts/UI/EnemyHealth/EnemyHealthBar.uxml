@@ -1,12 +1,9 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Game/Scripts/UI/worldSpace.uss?fileID=7433441132597879392&amp;guid=d46aaa100223a4f45a7f5c893051b55c&amp;type=3#worldSpace"/>
-    <ui:VisualElement name="HealthBar-Container" style="flex-grow: 1;">
-        <ui:VisualElement name="HealthBar" style="flex-grow: 1; width: 200px; height: 35px; background-color: rgb(251, 23, 0); align-content: center; align-self: flex-start; align-items: center;">
-            <ui:Label text="100&#10;" name="lblHealth" style="font-size: 12px;">
-                <Bindings>
-                    <ui:DataBinding property="text" data-source="project://database/Assets/_Game/Scripts/ScriptableObjects/EnemyHealth.asset?fileID=11400000&amp;guid=6e3f2d55bded4d640996d8d1d46b6d22&amp;type=2#EnemyHealth" data-source-path="currentHealth" binding-mode="ToTarget"/>
-                </Bindings>
-            </ui:Label>
+    <ui:VisualElement name="HealthBarRoot" class="health-bar-root" style="position: relative; width: 100px; height: 15px;">
+        <ui:VisualElement name="HealthBarTrack" class="health-bar-track" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgb(45, 24, 24); overflow: hidden;">
+            <ui:VisualElement name="HealthBarFill" class="health-bar-fill" style="width: 100%; height: 100%; background-color: rgb(190, 46, 45);"/>
         </ui:VisualElement>
+        <ui:Label name="HealthLabel" text="" class="health-bar-label" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; color: white; -unity-text-align: middle-center; font-size: 12px; -unity-font-style: bold;"/>
     </ui:VisualElement>
 </ui:UXML>
