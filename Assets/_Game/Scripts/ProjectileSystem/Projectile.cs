@@ -3,11 +3,18 @@ using UnityEngine;
 namespace Partisan
 {
     public class Projectile : MonoBehaviour
-    {       
-
+    {
+        [SerializeField] private ProjectileDataSO data;
         public Transform MyTarget;
-        [SerializeField] private float speed;
+        private float _speed;
+        private int _damage;
 
+
+        private void Awake()
+        {
+            _speed = data.Speed;
+            _damage = data.Damage;
+        }
 
         public void SetTarget(Transform target)
         {
@@ -23,14 +30,14 @@ namespace Partisan
             }
 
             var dir = MyTarget.position - transform.position;
-            var distanceThisFrame = speed * Time.deltaTime;
+            var distanceThisFrame = _speed * Time.deltaTime;
             transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!other.TryGetComponent<IDamageable>(out IDamageable damageable)) return;
-            damageable.Damage(10);
+            damageable.Damage(_damage);
             Destroy(gameObject);
         }
     }

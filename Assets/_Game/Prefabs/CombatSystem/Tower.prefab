@@ -26,12 +26,11 @@ Transform:
   m_GameObject: {fileID: 3511151267202410390}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.74, z: -2.76}
+  m_LocalPosition: {x: 0, y: 0, z: -2.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1161671827020136260}
-  - {fileID: 8009473377676901576}
+  - {fileID: 8707483506028107540}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3753034033554102802
@@ -46,14 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d8aa0fe23cc54442bc4edce42705d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.TurretController
-  range: 7.28
-  fireRate: 1
-  fireCooldown: 0
+  effectiveRange: 15
+  fireCooldown: 0.5
   rotationSpeed: 10
-  bulletPrefab: {fileID: 1121462164051562644, guid: e389d77f3d2897945a485f301b996de1, type: 3}
-  partToRotate: {fileID: 1161671827020136260}
+  projectilePrefab: {fileID: 1121462164051562644, guid: e389d77f3d2897945a485f301b996de1, type: 3}
+  turret: {fileID: 1161671827020136260}
   firePoint: {fileID: 7761702091823435562}
-  Target: {fileID: 0}
 --- !u!1 &5969906765846012927
 GameObject:
   m_ObjectHideFlags: 0
@@ -79,7 +76,7 @@ Transform:
   m_GameObject: {fileID: 5969906765846012927}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.100000024, z: 0.809}
+  m_LocalPosition: {x: 0, y: -0.100000024, z: 1.03}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 8375393871448741590}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.100000024, z: 0.5}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0.61}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.6}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -175,6 +172,39 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8607957033202141346
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8707483506028107540}
+  m_Layer: 0
+  m_Name: TowerComponents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8707483506028107540
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607957033202141346}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1161671827020136260}
+  - {fileID: 8009473377676901576}
+  m_Father: {fileID: 5769216941338454697}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8880869797828774020
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,12 +231,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8880869797828774020}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 5769216941338454697}
+  m_Father: {fileID: 8707483506028107540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6367122903201391468
 MeshFilter:
@@ -291,14 +321,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8949521458425580244}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.55, z: 0}
   m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3923519079924577346}
   - {fileID: 7761702091823435562}
-  m_Father: {fileID: 5769216941338454697}
+  m_Father: {fileID: 8707483506028107540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6302900519410790769
 MeshFilter:

@@ -1,8 +1,5 @@
-using System.Collections;
 using UnityEngine;
-
-
-
+using System.Threading;
 namespace Partisan
 {
     public class EnemySpawner : MonoBehaviour
@@ -10,19 +7,25 @@ namespace Partisan
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private Transform enemySpawnPoint;
         [SerializeField] private GameObject agentTarget;
-        //[SerializeField] private float spawnCooldown = 2f;
-        //[SerializeField] private float enemiesPerWave = 5f;
+
+        [SerializeField] private EnemyWaveDataSO data;
+        private float _spawnCooldown;
+        private int _waveCount;
 
         private TestingUI _ui;
 
         private void Awake()
         {
-            _ui = GetComponent<TestingUI>();          
+            _ui = GetComponent<TestingUI>();
+            _spawnCooldown = data.SpawnCooldown;
+            _waveCount = data.WaveCount;
+            
         }
 
         private void Start()
         {
             _ui.OnRequestEnemy += SpawnEnemy;
+            _ui.OnRequestWave += SpawnEnemyWave;
         }
 
         private void SpawnEnemy()
@@ -32,8 +35,15 @@ namespace Partisan
             controller.SetAgentTarget(agentTarget);
         }
 
-
-
-
+        private async void SpawnEnemyWave()
+        {
+            for (int i = 0; i < _waveCount; i++)
+            {
+                var t = Instantiate(enemyPrefab, enemySpawnPoint);
+                Enemy controller = t.GetComponent<Enemy>();
+                controller.SetAgentTarget(agentTarget);
+                await Awaitable.WaitForSecondsAsync(_spawnCooldown, CancellationToken.None);
+            }
+        }
     }
 }

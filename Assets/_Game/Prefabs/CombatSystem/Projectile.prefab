@@ -67,8 +67,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc7d8ecce1e67949a539c846dd20422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.BulletController
+  data: {fileID: 11400000, guid: 0dde6fd8f8bae444d8d9a67280d7fa52, type: 2}
   MyTarget: {fileID: 0}
-  speed: 50
 --- !u!1 &2898412375619258020
 GameObject:
   m_ObjectHideFlags: 0
