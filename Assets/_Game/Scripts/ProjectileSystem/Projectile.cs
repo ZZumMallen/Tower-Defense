@@ -14,7 +14,6 @@ namespace Partisan
             MyTarget = target;
         }
 
-
         private void Update()
         {
             if(!MyTarget)
@@ -25,18 +24,13 @@ namespace Partisan
 
             var dir = MyTarget.position - transform.position;
             var distanceThisFrame = speed * Time.deltaTime;
-
-            if (dir.magnitude <= distanceThisFrame) 
-            {
-                HitTarget();
-                return;
-            }
-
             transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         }
 
-        private void HitTarget()
+        private void OnTriggerEnter(Collider other)
         {
+            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable)) return;
+            damageable.Damage(10);
             Destroy(gameObject);
         }
     }
