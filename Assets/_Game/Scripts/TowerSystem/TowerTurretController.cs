@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace Partisan
 
         private Quaternion _startRotation;
         private Vector3 _dummyStartPosition;
+        private Vector3 _enemyPosition;
 
 
         private GameObject[] _enemyList;
@@ -61,10 +63,7 @@ namespace Partisan
         {            
             var newProjectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             var projectile = newProjectile.GetComponent<Projectile>();
-
-            var impactHeightOffset = obj.GetComponentInChildren<EnemyHitPoint>().gameObject;
-
-            projectile.MyTarget = impactHeightOffset.transform;
+            projectile.MyTarget = obj.transform;
             StartCoroutine(WeaponCooldown());
         }
 
@@ -122,6 +121,9 @@ namespace Partisan
 
             if (_nearestEnemy == null) return;
         }
+
+
+
 
         private void OnDrawGizmosSelected()
         {

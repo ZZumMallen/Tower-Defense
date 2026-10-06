@@ -1,8 +1,12 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/_Game/Scripts/UI/worldSpace.uss?fileID=7433441132597879392&amp;guid=d46aaa100223a4f45a7f5c893051b55c&amp;type=3#worldSpace"/>
-    <ui:VisualElement name="health-bar-container" data-source="project://database/Assets/_Game/SctiptableObjects/EnemyData.asset?fileID=11400000&amp;guid=dcaa109b65d322140acefe8b675bff28&amp;type=2#EnemyData" data-source-type="Partisan.Enemy+EnemyDataClass, Assembly-CSharp" style="height: 100%; width: 100px; flex-shrink: 0; flex-grow: 1;">
-        <ui:VisualElement name="health-bar__total-health" style="background-color: rgb(86, 38, 29); flex-shrink: initial; flex-grow: 1; height: 100%;">
-            <ui:VisualElement name="health-bar__current-health" style="background-color: rgb(255, 24, 0); width: 84px; height: 100%;"/>
+    <ui:VisualElement name="HealthBar-Container" style="flex-grow: 1;">
+        <ui:VisualElement name="HealthBar" style="flex-grow: 1; width: 200px; height: 35px; background-color: rgb(251, 23, 0); align-content: center; align-self: flex-start; align-items: center;">
+            <ui:Label text="100&#10;" name="lblHealth" style="font-size: 12px;">
+                <Bindings>
+                    <ui:DataBinding property="text" data-source="project://database/Assets/_Game/Scripts/ScriptableObjects/EnemyHealth.asset?fileID=11400000&amp;guid=6e3f2d55bded4d640996d8d1d46b6d22&amp;type=2#EnemyHealth" data-source-path="currentHealth" binding-mode="ToTarget"/>
+                </Bindings>
+            </ui:Label>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

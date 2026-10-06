@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278f378686dd86142ac988597a65f77d, type: 3}
-  m_Name: Basic
-  m_EditorClassIdentifier: Assembly-CSharp::Partisan.EnemyDataSO
-  m_maxHealth: 110
-  m_speed: 3.5
-  m_yTargetOffset: {x: 0, y: 1, z: 0}
+  m_Script: {fileID: 11500000, guid: e7fe5157816684544810270b4a79486e, type: 3}
+  m_Name: EnemyHealth
+  m_EditorClassIdentifier: Assembly-CSharp::Partisan.EnemyHealthSO
+  maxHealth: 100
+  currentHealth: 100
