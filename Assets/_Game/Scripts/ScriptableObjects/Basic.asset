@@ -10,9 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 278f378686dd86142ac988597a65f77d, type: 3}
-  m_Name: Enemy Data
-  m_EditorClassIdentifier: Assembly-CSharp::Partisan.EnemyData
-  m_enemyName: Basic Jim
-  m_maxHealth: 100
-  m_currentHealth: 100
+  m_Name: Basic
+  m_EditorClassIdentifier: Assembly-CSharp::Partisan.EnemyDataSO
+  m_maxHealth: 110
   m_speed: 3.5

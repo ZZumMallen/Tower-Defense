@@ -29,8 +29,9 @@ namespace Partisan
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable)) return;   
+            if (!other.TryGetComponent<IDamageable>(out IDamageable damageable)) return;
             damageable.Damage(10);
+            Destroy(gameObject);
         }
     }
 }

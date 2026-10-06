@@ -1,29 +1,30 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 namespace Partisan
 {
     [RequireComponent(typeof(NavMeshAgent))]
     public class Enemy : MonoBehaviour, IDamageable
-    {        
-        private NavMeshAgent _agent;
-        private float _maxHealth;
-        private float _currentHealth;
-        private float _speed;
+    {     
+        [SerializeField] private EnemyDataSO dataSO;
 
-        [SerializeField] private EnemyData enemyData;
+        private NavMeshAgent _agent;
+
+        private float _maxHealth;
+        private float _speed;
+        private float _currentHealth;
 
         private void Awake()
-        {
+        {  
             _agent = GetComponent<NavMeshAgent>();
-            _speed = enemyData.Speed;
-
+            _speed = dataSO.Speed;
+            _maxHealth = dataSO.MaxHealth;          
         }
 
         private void Start()
         {
-            _maxHealth = enemyData.MaxHealth;
-            //CurrentHealth = _currentHealth;
+            _currentHealth = _maxHealth;
         }
 
         public void SetAgentTarget(GameObject navAgentTarget)
@@ -35,12 +36,8 @@ namespace Partisan
         public void Damage(int damage)
         {
             _currentHealth -= damage;
-
-
-            if (_currentHealth <= 0) 
-            {
-                Destroy(gameObject);
-            }
+            if (_currentHealth <= 0) Destroy(gameObject);
         }
+
     }
 }

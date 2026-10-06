@@ -1,9 +1,6 @@
-using System;
 using System.Collections;
-using System.Runtime.CompilerServices;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Partisan
 {
@@ -38,8 +35,11 @@ namespace Partisan
 
         private void Start()
         {
+
             var p = gameObject.transform.position;
             _dummyStartPosition = new Vector3(p.x, p.y, p.z + 2);
+
+            
 
             _readyToShoot = true;
             InvokeRepeating(nameof(UpdateTarget), 0f, 0.5f);
@@ -61,7 +61,10 @@ namespace Partisan
         {            
             var newProjectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
             var projectile = newProjectile.GetComponent<Projectile>();
-            projectile.MyTarget = obj.transform;
+
+            var impactHeightOffset = obj.GetComponentInChildren<EnemyHitPoint>().gameObject;
+
+            projectile.MyTarget = impactHeightOffset.transform;
             StartCoroutine(WeaponCooldown());
         }
 
@@ -101,7 +104,7 @@ namespace Partisan
             {
                 var distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
 
-                if(distanceToEnemy < shortestDistance)
+                if (distanceToEnemy < shortestDistance)
                 {
                     shortestDistance = distanceToEnemy;
                     _nearestEnemy = enemy;
