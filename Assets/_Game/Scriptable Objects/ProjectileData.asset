@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dcf1b6c718ba074d925bf156921309c, type: 3}
   m_Name: ProjectileData
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.ProjectileDataSO
-  _speed: 0
-  _damage: 0
+  _speed: 50
+  _damage: 21

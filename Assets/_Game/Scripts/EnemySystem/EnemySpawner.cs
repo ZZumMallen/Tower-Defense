@@ -12,14 +12,13 @@ namespace Partisan
         private float _spawnCooldown;
         private int _waveCount;
 
-        private TestingUI _ui;
+        private DebugUI _ui;
 
         private void Awake()
         {
-            _ui = GetComponent<TestingUI>();
+            _ui = GetComponent<DebugUI>();
             _spawnCooldown = data.SpawnCooldown;
             _waveCount = data.WaveCount;
-            
         }
 
         private void Start()

@@ -75,12 +75,12 @@ using UnityEngine.InputSystem.Utilities;
 public partial class @PlayerInput: IInputActionCollection2, IDisposable
 {
     /// <summary>
-    /// Provides access to the underlying asset instance.
+    /// Provides access to the underlying asset Instance.
     /// </summary>
     public InputActionAsset asset { get; }
 
     /// <summary>
-    /// Constructs a new instance.
+    /// Constructs a new Instance.
     /// </summary>
     public @PlayerInput()
     {
@@ -973,7 +973,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         private @PlayerInput m_Wrapper;
 
         /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
+        /// Construct a new Instance of the input action map wrapper class.
         /// </summary>
         public RuntimeActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
@@ -1009,7 +1009,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @RightClick => m_Wrapper.m_Runtime_RightClick;
         /// <summary>
-        /// Provides access to the underlying input action map instance.
+        /// Provides access to the underlying input action map Instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_Runtime; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
@@ -1019,13 +1019,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="RuntimeActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="RuntimeActions" /> to an <see ref="InputActionMap" /> Instance.
         /// </summary>
         public static implicit operator InputActionMap(RuntimeActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
-        /// <param name="instance">Callback instance.</param>
+        /// <param name="instance">Callback Instance.</param>
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
@@ -1123,7 +1123,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Provides a new <see cref="RuntimeActions" /> instance referencing this action map.
+    /// Provides a new <see cref="RuntimeActions" /> Instance referencing this action map.
     /// </summary>
     public RuntimeActions @Runtime => new RuntimeActions(this);
 
@@ -1148,7 +1148,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         private @PlayerInput m_Wrapper;
 
         /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
+        /// Construct a new Instance of the input action map wrapper class.
         /// </summary>
         public UIActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         /// <summary>
@@ -1192,7 +1192,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         /// <summary>
-        /// Provides access to the underlying input action map instance.
+        /// Provides access to the underlying input action map Instance.
         /// </summary>
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
@@ -1202,13 +1202,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="UIActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="UIActions" /> to an <see ref="InputActionMap" /> Instance.
         /// </summary>
         public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
-        /// <param name="instance">Callback instance.</param>
+        /// <param name="instance">Callback Instance.</param>
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
@@ -1318,7 +1318,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     /// <summary>
-    /// Provides a new <see cref="UIActions" /> instance referencing this action map.
+    /// Provides a new <see cref="UIActions" /> Instance referencing this action map.
     /// </summary>
     public UIActions @UI => new UIActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;

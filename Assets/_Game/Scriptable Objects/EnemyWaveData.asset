@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bb61af36e002cd408a9718a8d59f940, type: 3}
   m_Name: EnemyWaveData
   m_EditorClassIdentifier: Assembly-CSharp::Partisan.EnemyWaveDataSO
-  _spawnCooldown: 0
-  _waveCount: 0
+  _spawnCooldown: 0.5
+  _waveCount: 5

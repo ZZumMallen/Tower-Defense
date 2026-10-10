@@ -1,0 +1,17 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/USS/gameMenu.uss?fileID=7433441132597879392&amp;guid=252efba92a5fea647bde2ef57377a9aa&amp;type=3#gameMenu"/>
+    <ui:VisualElement name="MenuContainer" style="flex-grow: 1;">
+        <ui:VisualElement name="MenuBackground" style="flex-grow: 1; -unity-background-image-tint-color: rgb(0, 0, 0); background-color: rgba(0, 0, 0, 0.627); align-items: center; flex-shrink: 1; justify-content: center; align-self: stretch; align-content: auto;">
+            <ui:VisualElement name="MenuWindow" style="flex-grow: 1; width: 80%; height: 80%; background-color: rgb(182, 133, 66); aspect-ratio: auto; top: auto; align-content: center; align-items: stretch; justify-content: center; align-self: center; flex-basis: 0; max-height: none; position: absolute; border-top-color: rgb(0, 0, 0); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-right-color: rgb(0, 0, 0); border-left-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0);">
+                <ui:VisualElement name="WindowTop" style="flex-grow: 1; align-items: center; justify-content: center;">
+                    <ui:Label text="Tower D. Fence" name="txtHeader" style="-unity-text-align: lower-left; white-space: pre; font-size: 134px; -unity-font-style: bold; -unity-font-definition: resource(&quot;FlatSkin/Font/Roboto-Black&quot;); -unity-text-outline-width: 6px; -unity-text-outline-color: rgb(188, 188, 188); letter-spacing: 0; word-spacing: 46px;"/>
+                </ui:VisualElement>
+                <ui:VisualElement name="WindowBot" style="flex-grow: 1; flex-direction: row; align-items: center; justify-content: center; align-self: stretch;">
+                    <ui:Button text="Endless Mode" name="btnEndless" class="unity-button-big"/>
+                    <ui:Button text="Campaign Mode" name="btnCampaign" display-tooltip-when-elided="false" class="unity-button-big"/>
+                    <ui:Button text="On Break Mode" name="btnUnknown" display-tooltip-when-elided="false" class="unity-button-big"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

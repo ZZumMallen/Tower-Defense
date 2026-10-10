@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 namespace Partisan
 {
-    public class TestingUI : MonoBehaviour
+    public class DebugUI : MonoBehaviour
     {
         private int _uiVersion = 0;
         
