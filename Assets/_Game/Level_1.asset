@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1005df69a7347aa44a1c19fcfb6dbe80, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: Assembly-CSharp::Partisan.BuildDataSO
+  width: 20
+  height: 20
+  pathNodeList: 00000000010000000200000003000000170000002b0000003f0000005300000054000000550000005600000057000000580000006c000000800000009400000095000000960000009700000098000000990000009a0000009b00000087000000730000005f00000060000000610000006200000063000000i

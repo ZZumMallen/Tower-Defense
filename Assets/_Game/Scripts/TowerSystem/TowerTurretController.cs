@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -39,7 +38,7 @@ namespace Partisan
 
             if (!_readyToShoot) return;
             
-            ShootAt(_targetSolution);
+            ShootAt(_targetSolution); //todo object pool
             _readyToShoot = false;
             
         }
