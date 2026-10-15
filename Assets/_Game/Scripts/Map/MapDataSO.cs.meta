@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1005df69a7347aa44a1c19fcfb6dbe80
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pathNode: {fileID: 600334545047305454, guid: 4305d245e6ac4554e8ca3dadef09f650, type: 3}
+  - buildableNode: {fileID: 600334545047305454, guid: 85fee8bf0345cbf43a87d9f5908f04e8, type: 3}
+  - emptyNode: {fileID: 404970867422905919, guid: 27f13736f7efb4f429ec602a56427c6f, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
