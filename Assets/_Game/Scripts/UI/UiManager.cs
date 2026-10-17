@@ -11,12 +11,12 @@ namespace Partisan
 
 		private void Awake()
 		{
-			GameManager.OnGameStateChanged += OnGameManagerStateChanged;
+			GmFsm.OnGameStateChanged += OnGameManagerStateChanged;
 		}
 
 		private void OnDestroy()
 		{
-			GameManager.OnGameStateChanged -= OnGameManagerStateChanged;
+			GmFsm.OnGameStateChanged -= OnGameManagerStateChanged;
 		}
 
 		private void OnGameManagerStateChanged(GameState state)

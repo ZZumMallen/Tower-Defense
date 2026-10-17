@@ -22,7 +22,7 @@ namespace Partisan
         {
             _panelRenderer = GetComponent<PanelRenderer>();
             _panelRenderer.RegisterUIReloadCallback(OnUIReload);
-            GameManager.OnGameStateChanged += OnGameManagerStateChanged;
+            GmFsm.OnGameStateChanged += OnGameManagerStateChanged;
         }
 
         private void OnGameManagerStateChanged(GameState state)
@@ -36,7 +36,7 @@ namespace Partisan
         private void OnDestroy()
         {
             _panelRenderer.UnregisterUIReloadCallback(OnUIReload);
-            GameManager.OnGameStateChanged -= OnGameManagerStateChanged;
+            GmFsm.OnGameStateChanged -= OnGameManagerStateChanged;
         }
 
         private void OnUIReload(PanelRenderer panelRenderer, VisualElement root, int version)

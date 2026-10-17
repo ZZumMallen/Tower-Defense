@@ -17,6 +17,10 @@ namespace Partisan
 		[SerializeField] private int width;
 		[TitleGroup("Titles/First Title")]
 		[SerializeField] private int height;
+		[TitleGroup("Titles/First Title")]
+		[SerializeField] private int enemySpawn;
+		[TitleGroup("Titles/First Title")]
+		[SerializeField] private int enemyTarget;
 		[TitleGroup("Titles/Prefabs")]
 		[SerializeField] private GameObject emptyNode;
 		[TitleGroup("Titles/Prefabs")]
@@ -80,10 +84,10 @@ namespace Partisan
 
 		private void InstantiateNode(Vector3 position)
 		{
-			Debug.Log("InstantiateNode", this);
-			var n = Instantiate(emptyNode, position, Quaternion.identity);
-			var currentNode = n.GetComponent<Node>();
-			currentNode.index = _nodeIndex;
+			var currentNode = Instantiate(emptyNode, position, Quaternion.identity);
+			var thisNode = currentNode.GetComponent<Node>();
+			thisNode.Index = _nodeIndex;
+			thisNode.ShowUI = true;
 		}
 
 		public void AddNodeToPathNodeList(int index)
@@ -101,7 +105,8 @@ namespace Partisan
 			pathNodes.RemoveAt(thisIndex);
 		}
 
-		
+		[ButtonGroup("Titles/Horizontal Buttons/Buttons")]
+		[Button]
 		private void AddPathNodes()
 		{
 			for (var index = 0; index < _nodeDictionary.Count; index++)
@@ -111,10 +116,11 @@ namespace Partisan
 			}
 		}
 		
-		
-		private void CreateLevel()
+		[ButtonGroup("Titles/Horizontal Buttons/Buttons")]
+		[Button]
+		private void CreateLevelSO()
 		{
-			AssetCreator.CreateLevelAsset(mapName,pathNodes,width,height);
+			MapAssetCreator.CreateLevelAsset(mapName,pathNodes,width,height, enemySpawn, enemyTarget);
 		}
 	}
 }

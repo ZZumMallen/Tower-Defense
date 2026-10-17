@@ -6,17 +6,19 @@ namespace Partisan
     {
         [SerializeField] private GameObject enemyPrefab;
         [SerializeField] private Transform enemySpawnPoint;
-        [SerializeField] private GameObject agentTarget;
+        [SerializeField] private GameObject enemyTarget;
 
         [SerializeField] private EnemyWaveDataSO data;
         private float _spawnCooldown;
         private int _waveCount;
 
         private DebugUI _ui;
+        private MapManager _mapManager;
 
         private void Awake()
         {
             _ui = GetComponent<DebugUI>();
+            _mapManager = GetComponent<MapManager>();
             _spawnCooldown = data.SpawnCooldown;
             _waveCount = data.WaveCount;
         }
@@ -25,13 +27,15 @@ namespace Partisan
         {
             _ui.OnRequestEnemy += SpawnEnemy;
             _ui.OnRequestWave += SpawnEnemyWave;
+            
+            
         }
 
         private void SpawnEnemy()
         {
             var t = Instantiate(enemyPrefab, enemySpawnPoint);
             Enemy controller = t.GetComponent<Enemy>();
-            controller.SetAgentTarget(agentTarget);
+            controller.SetAgentTarget(enemyTarget);
         }
 
         private async void SpawnEnemyWave()
@@ -40,7 +44,7 @@ namespace Partisan
             {
                 var t = Instantiate(enemyPrefab, enemySpawnPoint);
                 Enemy controller = t.GetComponent<Enemy>();
-                controller.SetAgentTarget(agentTarget);
+                controller.SetAgentTarget(enemyTarget);
                 await Awaitable.WaitForSecondsAsync(_spawnCooldown, CancellationToken.None);
             }
         }
